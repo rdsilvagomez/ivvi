@@ -42,21 +42,39 @@ import {utilService}  from   './Servicios/util';
 import {filtros}     from './componentes/filtros/filtros'; 
 import {filtroServicio}  from   './Servicios/filtros';
 
-  const routes: Routes = [ { path: 'habilitacion'     , component:habilitacionItems   , canActivate: [AuthGuard]     },
-                           { path: 'filtros'          , component:filtros   ,           canActivate: [AuthGuard]     },
-                           { path: 'asociacion'       , component:asociacion   ,        canActivate: [AuthGuard]     },
-            						   { path: 'grupos'           , component:listadoGrupos       , canActivate: [AuthGuard]     },
-            						   { path: 'proveedores'      , component:listadoProveedores  , canActivate: [AuthGuard]     },
-            						   { path: 'solcotizacion'    , component:solicitudCotizacion , canActivate: [AuthGuard]     },
-                           { path: 'login'            , component:login                                              },
+import {UsuariosComponent} from './componentes/usuarios/usuarios'; 
+
+
+  const routes: Routes = [ { path: 'habilitacion'        , component:habilitacionItems   , canActivate: [AuthGuard]     },
+                           { path: 'filtros'             , component:filtros             , canActivate: [AuthGuard]     },
+                           { path: 'asociacion'          , component:asociacion          , canActivate: [AuthGuard]     },
+            						   { path: 'grupos'              , component:listadoGrupos       , canActivate: [AuthGuard]     },
+            						   { path: 'proveedores'         , component:listadoProveedores  , canActivate: [AuthGuard]     },
+            						   { path: 'solcotizacion'       , component:solicitudCotizacion , canActivate: [AuthGuard]     },
+                           { path: 'login'               , component:login                                              },
+                           { path: 'usuarios'            , component:UsuariosComponent                                  },
+
                           /* { path: 'principal'        , component:principal           , canActivate: [AuthGuard]   },*/
             						   { path: '**'                ,redirectTo: 'habilitacion'          }  
   							];  
 @NgModule({
-  imports:      [RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule  /*,CustomFormsModule */],
-  declarations: [ AppComponent,habilitacionItems,listadoSolpedDisponibles ,listadoGrupos,listadoProveedores ,solicitudCotizacion,login ,SpinnerComponent,seleccionarGrupoContent,seleccionarGrupo,asociacion,seleccionarProveedorContent,seleccionarProveedor,principal,filtros],
-    entryComponents: [seleccionarGrupoContent,seleccionarProveedorContent,seleccionarProveedor],
-  bootstrap:    [ AppComponent   ],
-  providers :   [SolpedDisponibleServicio ,GrupoServicio,ProveedorServicio,SolicitudCotServicio,loginServicio,AuthGuard,LocalStorageService,asociacionServicio,utilService,filtroServicio ]
+  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule  /*,CustomFormsModule */],
+  declarations:    [ AppComponent,habilitacionItems,listadoSolpedDisponibles,
+                     listadoGrupos,listadoProveedores ,solicitudCotizacion,login,
+                     SpinnerComponent,seleccionarGrupoContent,seleccionarGrupo,asociacion,
+                     seleccionarProveedorContent,seleccionarProveedor,principal,filtros,
+                     UsuariosComponent],
+  entryComponents: [ seleccionarGrupoContent,seleccionarProveedorContent,seleccionarProveedor],
+  bootstrap:       [ AppComponent   ],
+  providers :      [ SolpedDisponibleServicio ,
+                     GrupoServicio,
+                     ProveedorServicio,
+                     SolicitudCotServicio,
+                     loginServicio,
+                     AuthGuard,
+                     LocalStorageService,
+                     asociacionServicio,
+                     utilService,
+                     filtroServicio ]
 })
 export class AppModule { }
