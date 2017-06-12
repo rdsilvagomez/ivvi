@@ -1,3 +1,23 @@
 <h1>
-Pantalla Usuarios
+Usuarios
 </h1>
+<table class="table  table-striped table-sm"> 
+<thead>
+	<th>Primer Nombre      </th>
+	<th>Apellido   	     </th>
+	<th>Usuario        	  </th>
+   <th>Password           </th>
+	<th>Proveedor          </th>
+</thead>
+   <tbody *ngIf="listado"> 
+  
+      <tr  *ngFor="let rec of listado.data" scope="row">
+      <td> <input    type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"  [(ngModel)]="rec.firstname"   ></td>
+      <td> <input    type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"  [(ngModel)]="rec.lastname"   ></td>  
+      <td> <input    type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"  [(ngModel)]="rec.username"   ></td>
+      <td> <input    type="password" class="form-control mb-2 mr-sm-2 mb-sm-0"  [(ngModel)]="rec.password"   ></td>
+      <td> <input    type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"  [(ngModel)]="rec.idProveedor"   ></td>
+      </tr>
+</tbody>
+
+</table>

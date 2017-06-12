@@ -43,6 +43,7 @@ import {filtros}     from './componentes/filtros/filtros';
 import {filtroServicio}  from   './Servicios/filtros';
 
 import {UsuariosComponent} from './componentes/usuarios/usuarios'; 
+import {usuarioServicio}  from   './Servicios/usuarios';
 
 
   const routes: Routes = [ { path: 'habilitacion'        , component:habilitacionItems   , canActivate: [AuthGuard]     },
@@ -75,6 +76,7 @@ import {UsuariosComponent} from './componentes/usuarios/usuarios';
                      LocalStorageService,
                      asociacionServicio,
                      utilService,
-                     filtroServicio ]
+                     filtroServicio,
+                     usuarioServicio ]
 })
 export class AppModule { }
