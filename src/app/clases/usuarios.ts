@@ -1,5 +1,5 @@
 import { metadata } from './metadata';
-export default class usuario {
+export   class usuario {
 	id:string; 
 	username: string; 
 	firstname:string; 

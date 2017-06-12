@@ -1,7 +1,8 @@
  
 import {Component, Input, OnDestroy,OnInit} from '@angular/core';
- import { usuarioServicio }                from '../../Servicios/usuarios';
- import { listadoUsuario }             from '../../clases/usuarios';
+ import { usuarioServicio }                 from '../../Servicios/usuarios';
+ import { usuario  }            		    from '../../clases/usuarios';
+ import { listadoUsuario }                  from '../../clases/usuarios';
 @Component({
   	moduleId: module.id,
     selector: 'usuarios',
@@ -9,6 +10,7 @@ import {Component, Input, OnDestroy,OnInit} from '@angular/core';
 })
 export class UsuariosComponent implements  OnInit {  
 	listado: listadoUsuario; 
+	page:number = 1 ; 
 	constructor (private srvUsr:usuarioServicio) {
 	
 		
@@ -22,9 +24,23 @@ export class UsuariosComponent implements  OnInit {
  
 	cargarUsuarios()
 	{
-		console.log('Inicio Cargar Usuario'); 
-		this.srvUsr.getListadoUsuario().subscribe(res=> this.listado= res); 
+	 
+		this.srvUsr.getListadoUsuario(this.page ).subscribe(res=> this.listado= res); 
 	}
 
+	actualizarUsuario(rec:usuario)
+	{
+		this.srvUsr.actualizarUsuario(rec).subscribe(res=>{
+
+
+		}); 
+
+
+	}
+	public pageChanged(event:any):void 
+	{
+		this.cargarUsuarios(); 
+
+	}
 
 }
