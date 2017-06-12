@@ -24,7 +24,7 @@ import { listadoProveedores  }       from '../../componentes/proveedores/proveed
 @Component({
     moduleId: module.id,
     selector: 'seleccionarProveedorContent',
-    templateUrl: '../../views/seleccionarProveedor/seleccionarProveedor.html',
+    templateUrl: '../../views/seleccionarProveedor/seleccionarProveedor.html?v=${new Date().getTime()}',
  
        })
 
@@ -58,7 +58,7 @@ import { listadoProveedores  }       from '../../componentes/proveedores/proveed
       @Component({
           moduleId : module.id,
           selector    : 'seleccionarProveedor',
-          templateUrl : '../../views/seleccionarProveedor/seleccionarProveedorCab.html',
+          templateUrl : '../../views/seleccionarProveedor/seleccionarProveedorCab.html?v=${new Date().getTime()}',
  
        })
 

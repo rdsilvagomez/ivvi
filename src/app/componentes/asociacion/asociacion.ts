@@ -10,7 +10,7 @@ import { response   }                 		from '../../clases/response';
 @Component({
   moduleId: module.id,
   selector: 'asociacion',
-  templateUrl: '../../views/asociacion/asociacion.html'
+  templateUrl: '../../views/asociacion/asociacion.html?v=${new Date().getTime()}'
  })
 	export class asociacion implements OnInit  {
 	 listadoEncabezado :listadoSolicitudCotizacionSapCab;

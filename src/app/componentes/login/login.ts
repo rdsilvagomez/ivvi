@@ -19,7 +19,7 @@ import {LocalStorageService } from   '../../Servicios/localstorage.service';
 @Component({
     moduleId: module.id,
    selector: 'login',
-  templateUrl: '../../views/login/login.html'
+  templateUrl: '../../views/login/login.html?v=${new Date().getTime()}'
        })
 
 

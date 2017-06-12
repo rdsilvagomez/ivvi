@@ -6,7 +6,7 @@ import {Component, Input, OnDestroy,OnInit} from '@angular/core';
 @Component({
   	moduleId: module.id,
     selector: 'usuarios',
-    templateUrl: '../../views/usuarios/usuarios.html'
+    templateUrl: '../../views/usuarios/usuarios.html?v=${new Date().getTime()}'
 })
 export class UsuariosComponent implements  OnInit {  
 	listado: listadoUsuario; 

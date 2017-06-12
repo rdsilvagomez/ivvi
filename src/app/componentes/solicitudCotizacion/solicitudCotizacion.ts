@@ -12,7 +12,7 @@ import { response   }                												     from '../../clases/respons
 @Component({
   moduleId: module.id,
   selector: 'solicitudCotizacion',
-  templateUrl: '../../views/solicitudCotizacion/solicitudCotizacion.html'
+  templateUrl: '../../views/solicitudCotizacion/solicitudCotizacion.html?v=${new Date().getTime()}'
  })
 
 	export class solicitudCotizacion implements OnInit  {

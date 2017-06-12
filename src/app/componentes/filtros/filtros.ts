@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   moduleId: module.id,
   selector: 'filtros',
-  templateUrl: '../../views/filtros/filtros.html'
+  templateUrl: '../../views/filtros/filtros.html?v=${new Date().getTime()}'
  })
 
 export class filtros implements OnInit  {

@@ -20,7 +20,7 @@ import { Grupo  }              from '../../clases/grupo';
 @Component({
     moduleId: module.id,
     selector: 'seleccionarGrupoContent',
-    templateUrl: '../../views/seleccionarGrupo/seleccionarGrupo.html',
+    templateUrl: '../../views/seleccionarGrupo/seleccionarGrupo.html?v=${new Date().getTime()}',
  
        })
  

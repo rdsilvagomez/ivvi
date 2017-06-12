@@ -21,7 +21,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 @Component({
   moduleId: module.id,
   selector: 'habilitacionItems',
-  templateUrl: '../../views/habilitacionItems/HabilitacionItem.html'
+  templateUrl: '../../views/habilitacionItems/HabilitacionItem.html?v=${new Date().getTime()}'
  
 })
 	export class habilitacionItems implements OnInit {

@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { OnInit, EventEmitter, Input, Output }           from '@angular/core';
+import { OnInit, EventEmitter, Input, Output,enableProdMode }           from '@angular/core';
 import {LocalStorageService} from   './Servicios/localstorage.service';
 import {habilitacionItems} 		  from './componentes/habilitacionItems/HabilitacionItems';
 
 import { Subscription }   from 'rxjs/Subscription';
+ import {  } from 'angular2/core';
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
-  templateUrl: 'views/navbar.html'
+  templateUrl: 'views/navbar.html?v=${new Date().getTime()}'
 })
 export class AppComponent  implements OnInit { name = 'Angular'; 
   	  ngOnInit(): void  {

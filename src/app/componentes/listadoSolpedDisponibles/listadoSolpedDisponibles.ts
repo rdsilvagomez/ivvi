@@ -20,7 +20,7 @@ import 'rxjs/add/observable/of';
  moduleId: module.id,
    encapsulation: ViewEncapsulation.None,
    selector: 'listadoDisponiblesmdl',
-  templateUrl: '../../views/listadoSolpedDisponibles/listadoSolpedDisponibles.html'
+  templateUrl: '../../views/listadoSolpedDisponibles/listadoSolpedDisponibles.html?v=${new Date().getTime()}'
        })
 
 export class listadoSolpedDisponibles implements OnInit {

@@ -4,7 +4,7 @@ import {Component, Input, OnDestroy,OnInit} from '@angular/core';
 @Component({
   	moduleId: module.id,
     selector: 'spinner',
-    templateUrl: '../../views/spinner/spinner.html'
+    templateUrl: '../../views/spinner/spinner.html?v=${new Date().getTime()}'
 })
 export class SpinnerComponent implements OnDestroy {  
     private currentTimeout: any;

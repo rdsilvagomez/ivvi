@@ -15,7 +15,7 @@ import { SpinnerComponent }          from '../../componentes/spinner/SpinnerComp
 @Component({
         
    selector: 'listadoProveedores',
-   templateUrl: 'app/views/proveedores/proveedores.html'
+   templateUrl: 'app/views/proveedores/proveedores.html?v=${new Date().getTime()}'
        })
 
 export class listadoProveedores implements OnInit {

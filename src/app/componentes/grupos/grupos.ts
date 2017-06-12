@@ -23,7 +23,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 @Component({
       moduleId : module.id,
    selector    : 'listadoGrupos',
-  templateUrl  : '../../views/grupos/grupos.html'
+  templateUrl  : '../../views/grupos/grupos.html?v=${new Date().getTime()}'
        })
 
 export class listadoGrupos implements OnInit {
