@@ -1,8 +1,11 @@
  
-import {Component, Input, OnDestroy,OnInit} from '@angular/core';
- import { usuarioServicio }                 from '../../Servicios/usuarios';
- import { usuario  }            		    from '../../clases/usuarios';
- import { listadoUsuario }                  from '../../clases/usuarios';
+import {Component, Input, OnDestroy,OnInit} 		from '@angular/core';
+ import { usuarioServicio }                 		from '../../Servicios/usuarios';
+ import { usuario  }            		    		from '../../clases/usuarios';
+ import { listadoUsuario }                  		from '../../clases/usuarios';
+ import {NgbModal, ModalDismissReasons,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
   	moduleId: module.id,
     selector: 'usuarios',
@@ -10,8 +13,12 @@ import {Component, Input, OnDestroy,OnInit} from '@angular/core';
 })
 export class UsuariosComponent implements  OnInit {  
 	listado: listadoUsuario; 
+    closeResult: string;
 	page:number = 1 ; 
-	constructor (private srvUsr:usuarioServicio) {
+	modalMensaje : string =""; 
+    esError      : number = 0 ; 
+	NgbdrefIngreso:  NgbModalRef;  
+	constructor (private srvUsr:usuarioServicio,private modalService : NgbModal ) {
 	
 		
 
@@ -24,16 +31,24 @@ export class UsuariosComponent implements  OnInit {
  
 	cargarUsuarios()
 	{
-	 
-		this.srvUsr.getListadoUsuario(this.page ).subscribe(res=> this.listado= res); 
+	 	this.srvUsr.getListadoUsuario(this.page ).subscribe(res=> this.listado= res); 
 	}
 
-	actualizarUsuario(rec:usuario)
+	actualizarUsuario(contentMensajeConfirmacion:any,rec:usuario)
 	{
 		this.srvUsr.actualizarUsuario(rec).subscribe(res=>{
-
-
-		}); 
+				if (res.success==true)	{
+					 						   this.esError= 0; 
+					 						   this.modalMensaje= "Usuario Actualizado Correctamente"; 
+					 						   this.modalService.open(contentMensajeConfirmacion,{size:'lg'});
+					 					}
+				 					    else 
+				 					    {       this.esError= 1; 
+				 					    	    this.modalMensaje= res.message; 
+				 					    		this.modalService.open(contentMensajeConfirmacion,{size:'lg'});
+				 					    }
+				 					    this.cargarUsuarios(); 
+					});  
 
 
 	}
@@ -42,5 +57,33 @@ export class UsuariosComponent implements  OnInit {
 		this.cargarUsuarios(); 
 
 	}
+	public opendgUsuario(contentIngresoUsuario:any) : void
+	{
+
+	this.NgbdrefIngreso= 	 this.modalService.open(contentIngresoUsuario,{size:'lg'});
+
+	}
+	public guardarUsuario (contentMensajeConfirmacion:any ,Nombres :any , Apellidos:any ,Usuario:any ,pwd:any ):void
+	{
+               this.srvUsr.ingresarUsuario(Nombres, Apellidos,Usuario,pwd  ).subscribe(res=>{ 
+               						 if (res.success==true)
+				 						{
+					 						   this.esError= 0; 
+					 						    
+					 						   this.NgbdrefIngreso.close(); 
+					 						   this.modalMensaje= "Usuario Creado Correctamente"; 
+					 						   this.modalService.open(contentMensajeConfirmacion,{size:'lg'});
+					 						  
+				 						}
+				 					    else 
+				 					    {       this.esError= 1; 
+				 					    	    this.modalMensaje= res.message; 
+				 					    		this.modalService.open(contentMensajeConfirmacion,{size:'lg'});
+				 					    }
+
+				 					}   ); 
+
+
+	} 
 
 }

@@ -26,8 +26,15 @@ export class usuarioServicio
             return this.http.get(this.Url.concat("/list?page=").concat( page)) 
 			               .map(response => response.json() as listadoUsuario);
         }
-        ingresarUsuario()
-        { }
+        ingresarUsuario(Nombres :any , Apellidos:any ,Usuario:any ,pwd:any):Observable<response>
+        {     return this.http.post(this.Url.concat("/ingresar") ,JSON.stringify({
+                                                                                    Nombres   : Nombres, 
+                                                                                    Apellidos : Apellidos,
+                                                                                    Usuario   : Usuario,
+                                                                                    pwd       : pwd}),
+                                                                   {headers: this.headers})
+                            .map((res) => res.json() as response)
+                             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));}
         asociarProveedor()
         { }
 
