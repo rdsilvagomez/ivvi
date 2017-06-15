@@ -1,5 +1,7 @@
 import { ViewChild }      from '@angular/core'; 
 import { Component, OnInit, EventEmitter, Input, Output ,OnChanges,SimpleChange }        from '@angular/core';
+ 
+
 import { FormGroup, FormBuilder, Validators,FormArray } 				  				 from '@angular/forms';
 import {NgbModal, ModalDismissReasons,NgbModalRef} 										 from '@ng-bootstrap/ng-bootstrap';
 import { SolicitudCotizacionCab } 														 from '../../clases/solicitudcotizaciones';
@@ -112,11 +114,11 @@ import { response   }                												     from '../../clases/respons
 		   this.total= acumulado; 
 		}
 
-		public EnviarCotizacion(contentConfirmacion:any,FileCotizacion:any)
+		public EnviarCotizacion(contentConfirmacion:any,FileCotizacion:any,ConsecutivoProveedor:any, FechaEntrega:any)
 		{
 		  					    if(this.fileList.length > 0) {
 		  					    	 
-							        this.solCotSer.enviarCotizacionSapConArchivo( this.frmDetalleCotizaciones.value.listado, this.idSolicitudCotizacionCabSeleccionado,this.fileList[0])
+							        this.solCotSer.enviarCotizacionSapConArchivo( this.frmDetalleCotizaciones.value.listado, this.idSolicitudCotizacionCabSeleccionado,this.fileList[0],ConsecutivoProveedor,FechaEntrega)
 							        .subscribe(res=>{
 								
 								 this.modalDetalleCotizacion.close(); 
@@ -147,8 +149,8 @@ import { response   }                												     from '../../clases/respons
 					this.modalService.open(contentConfirmacion,{size:'lg'});
 		    		return; 
     			}
-		  
-			this.solCotSer.enviarCotizacionSap( this.frmDetalleCotizaciones.value.listado, this.idSolicitudCotizacionCabSeleccionado)
+		   console.log('Envia Cotizacion Prueba'); 
+			this.solCotSer.enviarCotizacionSap( this.frmDetalleCotizaciones.value.listado, this.idSolicitudCotizacionCabSeleccionado,ConsecutivoProveedor,FechaEntrega)
 			.subscribe(res=>{
 								
 								 this.modalDetalleCotizacion.close(); 

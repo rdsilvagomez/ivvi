@@ -4,7 +4,7 @@ import {NgbModule}       from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent }  from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule }    from '@angular/http';
- 
+/*import {DpDatePickerModule} from 'ng2-date-picker';*/
 
 import {seleccionarGrupo}      from './componentes/seleccionarGrupo/seleccionarGrupo';
 import {seleccionarGrupoContent}      from './componentes/seleccionarGrupo/seleccionarGrupo';
@@ -59,7 +59,7 @@ import {usuarioServicio}  from   './Servicios/usuarios';
             						   { path: '**'                ,redirectTo: 'habilitacion'          }  
   							];  
 @NgModule({
-  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule  /*,CustomFormsModule */],
+  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule/*,DpDatePickerModule  ,CustomFormsModule */],
   declarations:    [ AppComponent,habilitacionItems,listadoSolpedDisponibles,
                      listadoGrupos,listadoProveedores ,solicitudCotizacion,login,
                      SpinnerComponent,seleccionarGrupoContent,seleccionarGrupo,asociacion,

@@ -31,20 +31,25 @@ this.solicitudCotizacionesUrl= utilSrv.rutaServicio;
                .map(response => response.json() as listadoSolCotDet);
   }
  
-  enviarCotizacionSap(listado:SolicitudCotizacionDetalle[],idSolicitudCotizacionCab: string):Observable<response>
+  enviarCotizacionSap(listado:SolicitudCotizacionDetalle[],idSolicitudCotizacionCab: string,ConsecutivoProveedor:any, FechaEntrega:any):Observable<response>
   {
      return this.http.post(this.solicitudCotizacionesUrl.concat("/solicitudcotizacionsap/enviarcotsap")
-           ,JSON.stringify({listado:listado,idSolicitudCotizacionCab: idSolicitudCotizacionCab}),{headers: this.headers})
+           ,JSON.stringify({listado:listado,
+                           idSolicitudCotizacionCab: idSolicitudCotizacionCab,
+                           FechaEntrega:FechaEntrega,
+                           ConsecutivoProveedor:ConsecutivoProveedor}),{headers: this.headers})
                                                                      .map((res) => res.json() as response)
                                                                      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
   
-  enviarCotizacionSapConArchivo(listado:SolicitudCotizacionDetalle[],idSolicitudCotizacionCab: string,file : File ):Observable<response>
+  enviarCotizacionSapConArchivo(listado:SolicitudCotizacionDetalle[],idSolicitudCotizacionCab: string,file : File,ConsecutivoProveedor:any, FechaEntrega:any ):Observable<response>
   {
         let formData:FormData = new FormData();
         formData.append('uploadFile', file, file.name);
         formData.append('listado',JSON.stringify(listado));
         formData.append('idSolicitudCotizacionCab',idSolicitudCotizacionCab);
+        formData.append('ConsecutivoProveedor',ConsecutivoProveedor);
+        formData.append('FechaEntrega',FechaEntrega);
         let headers = new Headers();
         headers.append('enctype', 'multipart/form-data');
         //headers.append('Content-Type', 'application/x-www-form-urlencoded'); 
