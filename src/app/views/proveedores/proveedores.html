@@ -50,7 +50,17 @@
       </td>
   
       <td colspan="1">{{prov.id}}</td>
-      <td style ="font-size: 18px;" colspan="4"> {{prov.descripcion}}</td>
+      <td colspan="4">
+      <div [ngSwitch]="showbuttons"> 
+      <font *ngSwitchCase=0 size="3">
+          {{prov.descripcion}}
+      </font>
+      <div *ngSwitchCase=1>
+          {{prov.descripcion}}
+      </div>
+      
+      </div>
+      </td>
 
       </tr>
     </tbody>

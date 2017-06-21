@@ -91,7 +91,9 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 			MATERIAL:		    [rec.MATERIAL],
 			MATERIAL_EXTERNAL:  [rec.MATERIAL_EXTERNAL],
 			CANTIDAD:           [rec.CANTIDAD, Validators.required],
-			UNIT    : 			[rec.UNIT]
+			UNIT    : 			[rec.UNIT],
+			UNITDES : 			[rec.UNITDES],
+			
         });
     }
 		public removerSolpedisponible(n: number )

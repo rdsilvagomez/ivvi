@@ -15,6 +15,8 @@ export class SolpedDisponible{
 	 MATERIAL_EXTERNAL  :string;
 	 CANTIDAD           :string; 
 	 UNIT 				:string; 
+	 UNITDES 		    :string; 
+
  }
 
  

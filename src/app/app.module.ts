@@ -45,7 +45,7 @@ import {filtroServicio}  from   './Servicios/filtros';
 import {UsuariosComponent} from './componentes/usuarios/usuarios'; 
 import {usuarioServicio}  from   './Servicios/usuarios';
 
-
+/*import { DatePickerModule } from 'ng2-datepicker';*/
   const routes: Routes = [ { path: 'habilitacion'        , component:habilitacionItems   , canActivate: [AuthGuard]     },
                            { path: 'filtros'             , component:filtros             , canActivate: [AuthGuard]     },
                            { path: 'asociacion'          , component:asociacion          , canActivate: [AuthGuard]     },
@@ -56,10 +56,10 @@ import {usuarioServicio}  from   './Servicios/usuarios';
                            { path: 'usuarios'            , component:UsuariosComponent                                  },
 
                           /* { path: 'principal'        , component:principal           , canActivate: [AuthGuard]   },*/
-            						   { path: '**'                ,redirectTo: 'habilitacion'          }  
+            						   { path: '**'                  , redirectTo: 'habilitacion'                                   }  
   							];  
 @NgModule({
-  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule/*,DpDatePickerModule  ,CustomFormsModule */],
+  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule/*,DatePickerModule   /*,CustomFormsModule */],
   declarations:    [ AppComponent,habilitacionItems,listadoSolpedDisponibles,
                      listadoGrupos,listadoProveedores ,solicitudCotizacion,login,
                      SpinnerComponent,seleccionarGrupoContent,seleccionarGrupo,asociacion,

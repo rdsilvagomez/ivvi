@@ -11,6 +11,9 @@ import { listadoSolCotDet           }													 from '../../clases/solicitudc
 import { SolicitudCotServicio }    														 from '../../Servicios/SolicitudCot.Service';
 import { SpinnerComponent }          													 from '../../componentes/spinner/SpinnerComponent';
 import { response   }                												     from '../../clases/response';
+declare var jQuery:any;
+declare var $:any;
+/*import { DatePickerOptions, DateModel } from 'ng2-datepicker';*/
 @Component({
   moduleId: module.id,
   selector: 'solicitudCotizacion',
@@ -19,6 +22,9 @@ import { response   }                												     from '../../clases/respons
 
 	export class solicitudCotizacion implements OnInit  {
 		@Input () listadoEncabezado :listadoSolCotCab;
+		/*date: DateModel;
+  		options: DatePickerOptions;*/
+
 		idSolicitudCotizacionCabSeleccionado : string; 
 		listadoDetalle    :listadoSolCotDet;
 		respuesta : response ; 
@@ -35,7 +41,8 @@ import { response   }                												     from '../../clases/respons
    							   }
 
 		 constructor(private _fb: FormBuilder,private modalService : NgbModal  , private solCotSer : SolicitudCotServicio ) 
-        {
+        {	/* this.options = new DatePickerOptions();*/
+	 		$( "#datepicker" ).datepicker();
 	 		this.frmDetalleCotizaciones  = this._fb.group({listado: this._fb.array([])});
   			this.frmDetalleCotizaciones.valueChanges.subscribe(data => {
       				 this.recalcular(data.listado); 
@@ -57,15 +64,15 @@ import { response   }                												     from '../../clases/respons
 	 initSolicitudCotizacionRec(rec: SolicitudCotizacionDetalle) {
       
         return this._fb.group({
-          	 id 					  : [rec.id],
-	   		 idSolicitudCotizacionCab : [rec.idSolicitudCotizacionCab],
-	   		 NUMERO_SOLPED            : [rec.NUMERO_SOLPED],
-	   		 PREQ_ITEM 				  : [rec.PREQ_ITEM],
-	   		 SHORT_TEXT 			  : [rec.SHORT_TEXT],
-	   		 MATERIAL  				  : [rec.MATERIAL],
-	   		 CANTIDAD                 : [rec.CANTIDAD],
-	   		 CANTIDAD_OFERTADA        : [rec.CANTIDAD_OFERTADA],
-	   		 PRECIOUNITARIO           : [rec.PRECIOUNITARIO]
+					          	 id 					  : [rec.id],
+						   		 idSolicitudCotizacionCab : [rec.idSolicitudCotizacionCab],
+						   		 NUMERO_SOLPED            : [rec.NUMERO_SOLPED],
+						   		 PREQ_ITEM 				  : [rec.PREQ_ITEM],
+						   		 SHORT_TEXT 			  : [rec.SHORT_TEXT],
+						   		 MATERIAL  				  : [rec.MATERIAL],
+						   		 CANTIDAD                 : [rec.CANTIDAD],
+						   		 CANTIDAD_OFERTADA        : [rec.CANTIDAD_OFERTADA],
+						   		 PRECIOUNITARIO           : [rec.PRECIOUNITARIO]
           	
 							 });
     }
@@ -95,7 +102,8 @@ import { response   }                												     from '../../clases/respons
 				this.solCotSer.getSolicitudCotDetalle(reg.id).subscribe(res=>this.cargarFormularioDetalle(res),
                        () => this.stopRefreshing(),
                        () => this.stopRefreshing()  ); 
-				this.modalDetalleCotizacion = this.modalService.open(detalleCotizacion,{size:'lg'})
+				this.modalDetalleCotizacion = this.modalService.open(detalleCotizacion,{size:'lg'});
+				$( "#datepicker" ).datepicker();
 
 		}
 		public calcularTotal()
