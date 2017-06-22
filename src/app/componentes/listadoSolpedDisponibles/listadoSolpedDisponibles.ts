@@ -50,7 +50,7 @@ export class listadoSolpedDisponibles implements OnInit {
     }
     public seleccionarItem (item:SolpedDisponible):void {
         
-        console.log(item); 
+       
          this.onPosicionSeleccionada.emit(item);  
                                                         }
 

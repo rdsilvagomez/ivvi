@@ -45,6 +45,9 @@ import {filtroServicio}  from   './Servicios/filtros';
 import {UsuariosComponent} from './componentes/usuarios/usuarios'; 
 import {usuarioServicio}  from   './Servicios/usuarios';
 
+import {DatepickerDirective} from './directives/DatepickerDirective'; 
+import { MyDatePickerModule } from 'mydatepicker';
+
 /*import { DatePickerModule } from 'ng2-datepicker';*/
   const routes: Routes = [ { path: 'habilitacion'        , component:habilitacionItems   , canActivate: [AuthGuard]     },
                            { path: 'filtros'             , component:filtros             , canActivate: [AuthGuard]     },
@@ -59,12 +62,13 @@ import {usuarioServicio}  from   './Servicios/usuarios';
             						   { path: '**'                  , redirectTo: 'habilitacion'                                   }  
   							];  
 @NgModule({
-  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule/*,DatePickerModule   /*,CustomFormsModule */],
+  imports:         [ RouterModule.forRoot(routes),HttpModule ,NgbModule.forRoot(), BrowserModule,FormsModule,ReactiveFormsModule,MyDatePickerModule/*,DatePickerModule   /*,CustomFormsModule */],
   declarations:    [ AppComponent,habilitacionItems,listadoSolpedDisponibles,
                      listadoGrupos,listadoProveedores ,solicitudCotizacion,login,
                      SpinnerComponent,seleccionarGrupoContent,seleccionarGrupo,asociacion,
                      seleccionarProveedorContent,seleccionarProveedor,principal,filtros,
-                     UsuariosComponent],
+                     UsuariosComponent,
+                     DatepickerDirective],
   entryComponents: [ seleccionarGrupoContent,seleccionarProveedorContent,seleccionarProveedor],
   bootstrap:       [ AppComponent   ],
   providers :      [ SolpedDisponibleServicio ,

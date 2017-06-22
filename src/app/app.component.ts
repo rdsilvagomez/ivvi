@@ -7,7 +7,7 @@ import {habilitacionItems} 		  from './componentes/habilitacionItems/Habilitacio
 
 import { Subscription }   from 'rxjs/Subscription';
  import {  } from 'angular2/core';
-
+/*declare var jQuery:any;*/
 @Component({
   moduleId: module.id,
   selector: 'my-app',

@@ -14,6 +14,7 @@ import { Grupo  }      				 from '../../clases/grupo';
 import { SpinnerComponent }          from '../../componentes/spinner/SpinnerComponent';
 import { Proveedor }            	 from '../../clases/proveedor';
 import { Observable }                from 'rxjs/Observable';
+
 import 'rxjs/add/operator/map';
 import {NgForm} from '@angular/forms';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
@@ -90,9 +91,10 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 			SHORT_TEXT:		    [rec.SHORT_TEXT],
 			MATERIAL:		    [rec.MATERIAL],
 			MATERIAL_EXTERNAL:  [rec.MATERIAL_EXTERNAL],
-			CANTIDAD:           [rec.CANTIDAD, Validators.required],
+			CANTIDAD:           [rec.QUANTITY, Validators.required],
 			UNIT    : 			[rec.UNIT],
 			UNITDES : 			[rec.UNITDES],
+			QUANTITY : 			[rec.QUANTITY] 
 			
         });
     }

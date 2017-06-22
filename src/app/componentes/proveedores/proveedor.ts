@@ -58,7 +58,7 @@ export class listadoProveedores implements OnInit {
 
      public ingresarProveedor(descripcion:string):void 
      {
-        console.log(descripcion); 
+        
     }
 
   public filtrarProveedoresxPosicion() : void 

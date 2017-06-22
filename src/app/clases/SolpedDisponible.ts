@@ -16,6 +16,7 @@ export class SolpedDisponible{
 	 CANTIDAD           :string; 
 	 UNIT 				:string; 
 	 UNITDES 		    :string; 
+	 QUANTITY			:number; 
 
  }
 

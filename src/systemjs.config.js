@@ -26,7 +26,8 @@
       // other libraries
       'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'ng2-datepicker':'npm:ng2-datepicker'
+      'ng2-datepicker':'npm:ng2-datepicker',
+      'mydatepicker': 'npm:mydatepicker/bundles/mydatepicker.umd.min.js'
        /*,'ng2-validation': 'node_modules/ng2-validation/bundles/ng2-validation.umd.js' */
 
     },

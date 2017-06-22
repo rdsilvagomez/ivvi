@@ -37,15 +37,11 @@
 <div class="card-header">
 	<h1>Generar Cotización</h1>
 	  <div class="form-inline">
-  <label class="sr-only" for="inlineFormInput">Consecutivo</label>
-  <input #Consecutivo type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="txtConsecutivo" placeholder="Consecutivo">
-
-  <label class="sr-only" for="inlineFormInputGroup">Fecha</label>
-  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-  
-    <input #Fecha type="date" class="form-control" id="textFecha" placeholder="Fecha">
-     <input type="text" id="datepicker">
-  </div>
+  		<label class="sr-only" for="inlineFormInput">Consecutivo</label>
+  		<input #Consecutivo type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="txtConsecutivo" placeholder="Consecutivo"  >
+		<input #Fecha 	  [(ngModel)]="fechaEntrega"	type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="datepicker"     placeholder="Fecha Entrega"  >
+ 		<my-date-picker [options]="myDatePickerOptions"
+                (dateChanged)="onDateChanged($event)"></my-date-picker>
    
 </div>
 <!--<ng2-datepicker [options]="options" [(ngModel)]="date"></ng2-datepicker>-->

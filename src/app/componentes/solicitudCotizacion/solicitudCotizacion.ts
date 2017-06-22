@@ -1,6 +1,8 @@
+
 import { ViewChild }      from '@angular/core'; 
 import { Component, OnInit, EventEmitter, Input, Output ,OnChanges,SimpleChange }        from '@angular/core';
  
+import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
 
 import { FormGroup, FormBuilder, Validators,FormArray } 				  				 from '@angular/forms';
 import {NgbModal, ModalDismissReasons,NgbModalRef} 										 from '@ng-bootstrap/ng-bootstrap';
@@ -11,8 +13,9 @@ import { listadoSolCotDet           }													 from '../../clases/solicitudc
 import { SolicitudCotServicio }    														 from '../../Servicios/SolicitudCot.Service';
 import { SpinnerComponent }          													 from '../../componentes/spinner/SpinnerComponent';
 import { response   }                												     from '../../clases/response';
-declare var jQuery:any;
-declare var $:any;
+import { DatepickerDirective }          											     from '../../directives/DatepickerDirective';
+/*import { RuntimeCompiler} from '@angular/compiler/src/runtime_compiler';*/
+
 /*import { DatePickerOptions, DateModel } from 'ng2-datepicker';*/
 @Component({
   moduleId: module.id,
@@ -21,6 +24,13 @@ declare var $:any;
  })
 
 	export class solicitudCotizacion implements OnInit  {
+
+		 private myDatePickerOptions: IMyDpOptions = {
+        // other options...
+       			 dateFormat: 'mm/dd/yyyy',
+    		};
+
+
 		@Input () listadoEncabezado :listadoSolCotCab;
 		/*date: DateModel;
   		options: DatePickerOptions;*/
@@ -35,14 +45,21 @@ declare var $:any;
         public isRequesting: boolean;
 	    frmDetalleCotizaciones :FormGroup; 
 	    fileList: FileList;
-		
+	    fechaEntrega:string; 
+		onDateChanged(event: IMyDateModel) {
+        // event properties are: event.date, event.jsdate, event.formatted and event.epoc
+		 this.fechaEntrega=event.formatted;
+        
+    		}
 		fileChange(event:any ) {
       		this.fileList  = event.target.files;
    							   }
 
-		 constructor(private _fb: FormBuilder,private modalService : NgbModal  , private solCotSer : SolicitudCotServicio ) 
+		 constructor(private _fb: FormBuilder,private modalService : NgbModal  , private solCotSer : SolicitudCotServicio/*,private _runtimeCompiler: RuntimeCompiler*/ ) 
         {	/* this.options = new DatePickerOptions();*/
-	 		$( "#datepicker" ).datepicker();
+	 		/*$( "#datepicker" ).datepicker();*/
+	 		/*this._runtimeCompiler.clearCache();*/
+	 		/*location.reload(); */
 	 		this.frmDetalleCotizaciones  = this._fb.group({listado: this._fb.array([])});
   			this.frmDetalleCotizaciones.valueChanges.subscribe(data => {
       				 this.recalcular(data.listado); 
@@ -103,7 +120,9 @@ declare var $:any;
                        () => this.stopRefreshing(),
                        () => this.stopRefreshing()  ); 
 				this.modalDetalleCotizacion = this.modalService.open(detalleCotizacion,{size:'lg'});
-				$( "#datepicker" ).datepicker();
+				
+				/*$("#datepicker").datepicker();*/
+			 
 
 		}
 		public calcularTotal()
@@ -157,7 +176,7 @@ declare var $:any;
 					this.modalService.open(contentConfirmacion,{size:'lg'});
 		    		return; 
     			}
-		   console.log('Envia Cotizacion Prueba'); 
+ 
 			this.solCotSer.enviarCotizacionSap( this.frmDetalleCotizaciones.value.listado, this.idSolicitudCotizacionCabSeleccionado,ConsecutivoProveedor,FechaEntrega)
 			.subscribe(res=>{
 								
